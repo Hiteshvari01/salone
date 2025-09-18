@@ -115,7 +115,7 @@ app.get('/admin', (req, res) => {
 app.use('/user', userRouter); 
 
 app.get('/', (req, res) => {
-  res.redirect('/user'); // ya koi specific user route, e.g., /user/home
+  res.redirect('/user') ; // ya koi specific user route, e.g., /user/home
 });
 // Error Handler
 
