@@ -1,0 +1,75 @@
+<div class="container-fluid py-5">
+  <div class="row justify-content-center">
+    <div class="col-12">
+      <div class="card shadow-lg p-4 rounded-4" style="background-color: #f8f2eb;">
+       
+        <!-- Image Preview Circle -->
+        <div class="mb-4 d-flex ">
+          <img id="imagePreview" 
+               src="<%= service.image?.url || 'https://via.placeholder.com/120' %>" 
+               alt="Service Image" class="rounded-circle border border-3 border-warning"
+               style="width: 120px; height: 120px; object-fit: cover;">
+        </div>
+
+        <!-- Upload New Image -->
+        <div class="mb-4 d-flex ">
+          <input type="file" name="image" accept="image/*" class="form-control d-inline-block w-auto" onchange="previewImage(event)">
+          <div class="invalid-feedback text-center mt-1">Upload a service image if you want to replace the existing one.</div>
+        </div>
+
+        <form action="/admin/services/edit/<%= service._id %>?_method=PUT"  
+              method="POST" 
+              enctype="multipart/form-data" 
+              class="needs-validation" 
+              novalidate>
+
+          <!-- Name -->
+          <div class="mb-3">
+            <label class="form-label fw-semibold" style="color: #5a4630;">Service Name</label>
+            <input type="text" name="name" value="<%= service.name %>" class="form-control" required>
+            <div class="invalid-feedback">Please enter the service name.</div>
+          </div>
+
+          <!-- Description -->
+          <div class="mb-3">
+            <label class="form-label fw-semibold" style="color: #5a4630;">Description</label>
+            <textarea name="description" class="form-control" rows="3" required><%= service.description %></textarea>
+            <div class="invalid-feedback">Please enter the description.</div>
+          </div>
+
+          <!-- Price -->
+          <div class="mb-3">
+            <label class="form-label fw-semibold" style="color: #5a4630;">Price (₹)</label>
+            <input type="number" name="price" value="<%= service.price %>" class="form-control" required>
+            <div class="invalid-feedback">Please enter the price.</div>
+          </div>
+
+          <!-- Duration -->
+          <div class="mb-4">
+            <label class="form-label fw-semibold" style="color: #5a4630;">Duration</label>
+            <input type="text" name="duration" value="<%= service.duration %>" class="form-control">
+          </div>
+
+          <!-- Buttons -->
+          <div class="d-flex justify-content-between">
+            <button type="submit" class="btn" style="background-color: #bf9456; color: white;">Update Service</button>
+            <a href="/admin/services" class="btn btn-secondary">Cancel</a>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+
+
+function previewImage(event) {
+  const reader = new FileReader();
+  reader.onload = function(){
+    document.getElementById('imagePreview').src = reader.result;
+  };
+  reader.readAsDataURL(event.target.files[0]);
+}
+</script>

@@ -1,0 +1,103 @@
+
+    <!-- Hero Start -->
+    <div class="container-fluid bg-light page-header py-5 mb-5">
+        <div class="container text-center py-5">
+            <h1 class="display-1 animated slideInLeft">About</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb justify-content-center animated slideInLeft mb-0">
+                    <li class="breadcrumb-item"><a class="text-primary" href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a class="text-primary" href="#">Pages</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">About</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <!-- Hero End -->
+
+<!-- About Start -->
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.2s">
+                <img class="img-fluid mb-3" src="user/img/about.jpg" alt="">
+                <div class="d-flex align-items-center bg-light">
+                    <div class="btn-square flex-shrink-0 bg-primary" style="width: 100px; height: 100px;">
+                        <i class="fa fa-phone fa-2x text-dark"></i>
+                    </div>
+                    <div class="px-3">
+                        <h3><%= adminData.contactPhone %></h3>
+                        <span>Call us direct 24/7 for get a free consultation</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                <h1 class="font-dancing-script text-primary">About Us</h1>
+                <h1 class="mb-5">Why People Choose Us!</h1>
+                <p class="mb-4"><%= adminData.aboutUsText %></p>
+                <div class="row g-3 mb-5">
+                    <div class="col-sm-6">
+                        <div class="bg-light text-center p-4">
+                            <i class="fas fa-calendar-alt fa-4x text-primary"></i>
+                            <h1 class="display-5" data-toggle="counter-up"><%= adminData.yearsOfExperience %></h1>
+                            <p class="text-dark text-uppercase mb-0">Years experience</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="bg-light text-center p-4">
+                            <i class="fas fa-users fa-4x text-primary"></i>
+                            <h1 class="display-5" data-toggle="counter-up"><%= adminData.happyCustomers %></h1>
+                            <p class="text-dark text-uppercase mb-0">Happy Customers</p>
+                        </div>
+                    </div>
+                </div>
+                <a class="btn btn-primary text-uppercase px-5 py-3" href="">Read More</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- About End -->
+
+<!-- Team Start -->
+<div class="container-fluid overflow-hidden py-5">
+    <div class="container">
+        <div class="text-center wow fadeIn" data-wow-delay="0.2s">
+            <h1 class="font-dancing-script text-primary">Team Members</h1>
+            <h1 class="mb-5">Our Experienced Specialists</h1>
+        </div>
+        <div class="row g-4 team">
+            <% if (staffData && staffData.length > 0) { %>
+                <% staffData.forEach((staff, index) => { %>
+                    <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="<%= 0.1 + index*0.2 %>s">
+                        <div class="team-item position-relative overflow-hidden">
+                            <img class="img-fluid w-100" src="<%= staff.image.url %>" alt="<%= staff.name %>">
+                            <div class="team-overlay">
+                                <p class="text-primary mb-1"><%= staff.specialization %></p>
+                                <h4><%= staff.name %></h4>
+                                <div class="d-flex justify-content-center">
+                                    <% if(staff.facebook){ %>
+                                        <a class="btn btn-dark btn-sm-square border-2 me-3" href="<%= staff.facebook %>">
+                                            <i class="fab fa-facebook-f"></i>
+                                        </a>
+                                    <% } %>
+                                    <% if(staff.instagram){ %>
+                                        <a class="btn btn-dark btn-sm-square border-2 me-3" href="<%= staff.instagram %>">
+                                            <i class="fab fa-instagram"></i>
+                                        </a>
+                                    <% } %>
+                                    <% if(staff.linkedin){ %>
+                                        <a class="btn btn-dark btn-sm-square border-2" href="<%= staff.linkedin %>">
+                                            <i class="fab fa-linkedin-in"></i>
+                                        </a>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <% }) %>
+            <% } else { %>
+                <p class="text-center">No staff members found.</p>
+            <% } %>
+        </div>
+    </div>
+</div>
+<!-- Team End -->

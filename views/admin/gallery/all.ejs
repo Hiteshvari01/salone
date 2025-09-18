@@ -1,0 +1,52 @@
+<div class="container mt-4 bg-[#f8f2eb] p-4 rounded-lg">
+
+    <!-- Heading + Add Button -->
+    <div class="flex justify-between items-center mb-4">
+        <h2 class="font-bold text-[#c29557] text-2xl border-b-2 border-[#c29557] inline-block pb-1">
+            Gallery Images
+        </h2>
+        <a href="/admin/gallery/new" class="bg-[#c29557] text-white font-medium px-4 py-2 rounded hover:bg-[#b37e44] transition">
+            Add New Image
+        </a>
+    </div>
+
+    <!-- Image Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <% images.forEach(image => { %>
+            <div class="overflow-hidden rounded-3xl shadow-sm border-0 transform transition duration-300 hover:scale-105">
+                <div class="bg-white rounded-3xl overflow-hidden shadow hover:shadow-lg transition">
+                    <!-- Image with fallback -->
+                    <img src="<%= image.imageUrl && image.imageUrl.url ? image.imageUrl.url : '/images/placeholder.png' %>" 
+                         class="w-full h-56 object-cover transition-transform duration-300 hover:scale-110" alt="<%= image.title %>">
+
+                    <div class="p-4">
+                        <h5 class="font-bold text-[#c29557] text-lg">
+                            <%= image.title %>
+                        </h5>
+                        <p class="text-[#5a4630] text-sm mt-1">
+                            <%= image.description || 'No description provided.' %>
+                        </p>
+                    </div>
+
+                    <div class="flex justify-end gap-2 p-2 bg-white border-t border-gray-100">
+                        <!-- Edit Icon Only -->
+                        <a href="/admin/gallery/<%= image._id %>/edit" class="bg-blue-500 text-white rounded-full p-2 flex items-center justify-center hover:bg-blue-600 transition">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <!-- Delete Icon Only -->
+                        <form action="/admin/gallery/<%= image._id %>?_method=DELETE" method="POST" style="display:inline;">
+                            <button class="bg-red-500 text-white rounded-full p-2 flex items-center justify-center hover:bg-red-600 transition">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+
+    <!-- No images message -->
+    <% if(images.length === 0) { %>
+        <p class="text-center text-[#5a4630] mt-4">No images found. Click "Add New Image" to upload.</p>
+    <% } %>
+</div>

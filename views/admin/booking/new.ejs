@@ -1,0 +1,48 @@
+<div class="p-6">
+    <div class="max-w-4xl mx-auto bg-[#f8f2eb] p-6 rounded shadow border-l-4 border-[#c69858]">
+        <h1 class="text-2xl font-bold mb-4 text-[#c69858]">Create New Booking</h1>
+        <form action="/admin/booking/submit" method="POST" class="space-y-4 needs-validation" novalidate>
+            <div>
+                <label class="block mb-1 text-[#5a4630]">Customer Name</label>
+                <input type="text" name="customer[name]" class="w-full border border-[#c69858] p-2 rounded" required />
+                <div class="invalid-feedback">Customer Name is required.</div>
+            </div>
+            <div>
+                <label class="block mb-1 text-[#5a4630]">Customer Email</label>
+                <input type="email" name="customer[email]" class="w-full border border-[#c69858] p-2 rounded" required />
+                <div class="invalid-feedback">Customer Email is required.</div>
+            </div>
+            <div>
+                <label class="block mb-1 text-[#5a4630]">Customer Phone</label>
+                <input type="tel" name="customer[phone]" class="w-full border border-[#c69858] p-2 rounded" required />
+                <div class="invalid-feedback">Customer Phone is required.</div>
+            </div>
+            <div>
+                <label class="block mb-1 text-[#5a4630]">Service</label>
+                <select name="serviceId" class="w-full border border-[#c69858] p-2 rounded" required>
+                    <option value="">-- Select a Service --</option>
+                    <% services.forEach(service => { %>
+                        <option value="<%= service._id %>"><%= service.name %></option>
+                    <% }) %>
+                </select>
+                <div class="invalid-feedback">Please select a service.</div>
+            </div>
+            <div>
+                <label class="block mb-1 text-[#5a4630]">Date</label>
+                <input type="date" name="date" class="w-full border border-[#c69858] p-2 rounded" required />
+                <div class="invalid-feedback">Date is required.</div>
+            </div>
+            <div>
+                <label class="block mb-1 text-[#5a4630]">Time</label>
+                <input type="time" name="time" class="w-full border border-[#c69858] p-2 rounded" required />
+                <div class="invalid-feedback">Time is required.</div>
+            </div>
+            <div>
+                <label class="block mb-1 text-[#5a4630]">Additional Notes</label>
+                <textarea name="notes" class="w-full border border-[#c69858] p-2 rounded" rows="3"></textarea>
+            </div>
+
+            <button type="submit" class="bg-[#c69858] text-white px-4 py-2 rounded hover:bg-[#a97d4b]">Book Now</button>
+        </form>
+    </div>
+</div>

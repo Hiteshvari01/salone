@@ -1,0 +1,85 @@
+<header class="sticky top-0 z-50 flex items-center justify-between px-4 py-3 bg-white shadow-md">
+    <!-- Left: Sidebar toggle + Logo -->
+    <div class="flex items-center space-x-4">
+        <button id="toggleSidebar" class="md:hidden text-gray-600 hover:text-[#bf9456] focus:outline-none">
+            <i class="fas fa-bars fa-lg"></i>
+        </button>
+        <div class="text-2xl font-bold flex items-center space-x-2 text-[#bf9456]">
+            <i class="bi bi-scissors"></i>
+            <span>Salone Admin</span>
+        </div>
+       
+    </div>
+
+    <!-- Center: Quick action buttons -->
+    <div class="hidden md:flex items-center space-x-3">
+        <a href="/admin/booking/new" class="bg-gradient-to-r from-[#bf9456] to-[#d7a15c] text-white px-3 py-2 rounded-lg font-semibold shadow flex items-center space-x-1 text-sm">
+            <i class="fas fa-plus"></i><span>Booking</span>
+        </a>
+        <a href="/admin/services/add" class="bg-[#bf9456]/80 hover:bg-[#bf9456] text-white px-3 py-2 rounded-lg font-semibold shadow flex items-center space-x-1 text-sm">
+            <i class="fas fa-cut"></i><span>Service</span>
+        </a>
+        <a href="/admin/staff/add" class="bg-[#bf9456]/80 hover:bg-[#bf9456] text-white px-3 py-2 rounded-lg font-semibold shadow flex items-center space-x-1 text-sm">
+            <i class="fas fa-user"></i><span>Staff</span>
+        </a>
+        <a href="/admin/booking/new" class="bg-[#bf9456]/80 hover:bg-[#bf9456] text-white px-3 py-2 rounded-lg font-semibold shadow flex items-center space-x-1 text-sm">
+            <i class="fas fa-users"></i><span>Customer</span>
+        </a>
+    </div>
+
+    <!-- Right: Profile + Optional Notifications -->
+    <div class="flex items-center space-x-3">
+        <!-- Optional Notification bell -->
+        <button class="hidden md:flex text-gray-600 hover:text-[#bf9456] relative">
+            <i class="fas fa-bell fa-lg"></i>
+            <span class="absolute -top-1 -right-1 inline-flex items-center justify-center px-1.5 py-0.5 text-xs font-bold leading-none text-white bg-red-500 rounded-full">3</span>
+        </button>
+
+        <!-- Profile Dropdown -->
+        <div class="relative">
+            <button id="profileDropdown" class="flex items-center space-x-2 focus:outline-none hover:bg-gray-100 px-2 py-1 rounded transition">
+                <img src="<%= (typeof admin !== 'undefined' && admin.profileImage) ? admin.profileImage.url : 'https://via.placeholder.com/40' %>" 
+     alt="Profile" class="w-10 h-10 rounded-full border-2 border-gray-200" />
+<span class="hidden md:block font-medium text-gray-700"><%= (typeof admin !== 'undefined' && admin.name) ? admin.name : 'Admin' %></span>
+
+                <i class="fas fa-caret-down ml-1 text-gray-500"></i>
+            </button>
+            <div id="dropdownMenu" class="absolute right-0 mt-2 w-48 bg-white border rounded-lg shadow-lg hidden">
+                <a href="/admin/settings" class="block px-4 py-2 hover:bg-gray-100 rounded-t-lg">Profile</a>
+                
+            </div>
+        </div>
+    </div>
+</header>
+<script>
+    // Sidebar toggle functionality
+    const toggleSidebar = document.getElementById('toggleSidebar');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+
+    toggleSidebar.addEventListener('click', () => {
+        sidebar.classList.toggle('-translate-x-full');
+        overlay.classList.toggle('hidden');
+    });
+
+    // Overlay click to close sidebar
+    overlay.addEventListener('click', () => {
+        sidebar.classList.add('-translate-x-full');
+        overlay.classList.add('hidden');
+    });
+
+    // Profile dropdown toggle
+    const profileDropdown = document.getElementById('profileDropdown');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+
+    profileDropdown.addEventListener('click', () => {
+        dropdownMenu.classList.toggle('hidden');
+    });
+
+    // Click outside to close dropdown
+    window.addEventListener('click', function(e) {
+        if (!profileDropdown.contains(e.target)) {
+            dropdownMenu.classList.add('hidden');
+        }
+    });
+</script>

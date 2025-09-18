@@ -1,0 +1,235 @@
+<!-- Hero Start -->
+    <div class="container-fluid p-0 hero-header bg-light mb-5">
+        <div class="container p-0">
+            <div class="row g-0 align-items-center">
+                <div class="col-lg-6 hero-header-text py-5">
+                    <div class="py-5 px-3 ps-lg-0">
+                        <h1 class="font-dancing-script text-primary animated slideInLeft">Welcome</h1>
+                        <h1 class="display-1 mb-4 animated slideInLeft">salone</h1>
+                        <div class="row g-4 animated slideInLeft">
+                            <div class="col-md-6">
+                                <div class="d-flex align-items-center">
+                                    <div class="btn-square btn btn-primary flex-shrink-0">
+                                        <i class="fa fa-phone text-dark"></i>
+                                    </div>
+                                    <div class="px-3">
+                                        <h5 class="text-primary mb-0">Call Us</h5>
+                                        <p class="fs-5 text-dark mb-0"><%= adminData.contactPhone %></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-flex align-items-center">
+                                    <div class="btn-square btn btn-primary flex-shrink-0">
+                                        <i class="fa fa-envelope text-dark"></i>
+                                    </div>
+                                    <div class="px-3">
+                                        <h5 class="text-primary mb-0">Mail Us</h5>
+                                        <p class="fs-5 text-dark mb-0"><%= adminData.contactEmail %></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="owl-carousel header-carousel animated fadeIn">
+                        <img class="img-fluid" src="user/img/hero-slider-1.jpg" alt="">
+                        <img class="img-fluid" src="user/img/hero-slider-2.jpg" alt="">
+                        <img class="img-fluid" src="user/img/hero-slider-3.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Hero End -->
+
+
+<!-- About Start -->
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.2s">
+                <img class="img-fluid mb-3" src="user/img/about.jpg" alt="">
+                <div class="d-flex align-items-center bg-light">
+                    <div class="btn-square flex-shrink-0 bg-primary" style="width: 100px; height: 100px;">
+                        <i class="fa fa-phone fa-2x text-dark"></i>
+                    </div>
+                    <div class="px-3">
+                        <h3><%= adminData.contactPhone %></h3>
+                        <span>Call us direct 24/7 for get a free consultation</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                <h1 class="font-dancing-script text-primary">About Us</h1>
+                <h1 class="mb-5">Why People Choose Us!</h1>
+                <p class="mb-4"><%= adminData.aboutUsText %></p>
+                <div class="row g-3 mb-5">
+                    <div class="col-sm-6">
+                        <div class="bg-light text-center p-4">
+                            <i class="fas fa-calendar-alt fa-4x text-primary"></i>
+                            <h1 class="display-5" data-toggle="counter-up"><%= adminData.yearsOfExperience %></h1>
+                            <p class="text-dark text-uppercase mb-0">Years experience</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="bg-light text-center p-4">
+                            <i class="fas fa-users fa-4x text-primary"></i>
+                            <h1 class="display-5" data-toggle="counter-up"><%= adminData.happyCustomers %></h1>
+                            <p class="text-dark text-uppercase mb-0">Happy Customers</p>
+                        </div>
+                    </div>
+                </div>
+                <a class="btn btn-primary text-uppercase px-5 py-3" href="">Read More</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- About End -->
+      <!-- Service Start -->
+<div class="container-fluid service py-5">
+    <div class="container">
+        <div class="text-center wow fadeIn" data-wow-delay="0.1s">
+            <h1 class="font-dancing-script text-primary">Our Services</h1>
+            <h1 class="mb-5">Explore Our Services</h1>
+        </div>
+        <div class="row g-4 g-md-0 text-center">
+            <% services.forEach((service, index) => { %>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-item h-100 p-4 border-bottom border-end wow fadeIn" 
+                         data-wow-delay="<%= (0.1 + index * 0.2).toFixed(1) %>s">
+                        <!-- Image center aligned -->
+                        <img class="img-fluid mx-auto d-block mb-3" 
+                             src="<%= service.image && service.image.url ? service.image.url : 'img/default-service.png' %>" 
+                             alt="<%= service.name %>">
+                        <h3 class="mb-3"><%= service.name %></h3>
+                        <p class="mb-3"><%= service.description ? service.description : 'Description not available' %></p>
+                        <a class="btn btn-sm btn-primary text-uppercase" href="">
+                            Read More <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+</div>
+<!-- Service End -->
+
+<!-- Pricing Start -->
+<div class="container-fluid price px-0">
+    <div class="row g-0">
+        <div class="col-md-6">
+            <div class="d-flex align-items-center h-100 bg-primary p-5">
+                <div class="wow fadeIn" data-wow-delay="0.3s">
+                    <h1 class="font-dancing-script text-white">Pricing</h1>
+                    <h1 class="mb-0">Beauty Salon</h1>
+                    <h1 class="display-1 text-uppercase mb-5" style="letter-spacing: 10px;">Pricing</h1>
+                    <div class="row g-4 align-items-center">
+                        <div class="col-lg-6">
+                            <div class="text-center bg-dark p-5">
+                                <h4 class="text-white">Enjoy</h4>
+                                <h1 class="display-1 font-work-sans text-white"><%= adminData.discountOfferPercentage %>%</h1>
+                                <p class="fs-2 text-white mb-0">Off</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <p><%= adminData.discountOfferText %></p>
+                            <a class="btn btn-dark" href="">Get <%= adminData.discountOfferPercentage %>% Off</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="h-100 bg-dark p-5">
+                <% if (services && services.length > 0) { %>
+                <% services.forEach((service, index) => { %>
+                    <div class="price-item mb-3 wow fadeIn" data-wow-delay="0.<%= index + 1 %>s">
+                        <img class="img-fluid flex-shrink-0" src="<%= service.image.url %>" alt="<%= service.name %>">
+                        <div class="text-end px-4">
+                            <h6 class="text-uppercase text-primary"><%= service.name %></h6>
+                            <h3 class="text-white font-work-sans mb-0">$<%= service.price %></h3>
+                        </div>
+                    </div>
+                <% }) %>
+            <% } else { %>
+                <p class="text-white">No services available right now.</p>
+            <% } %>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Pricing End -->
+
+<!-- Gallery Start -->
+<div class="container-fluid gallery py-5">
+    <div class="container p-0">
+        <div class="text-center wow fadeIn" data-wow-delay="0.2s">
+            <h1 class="font-dancing-script text-primary">Gallery</h1>
+            <h1 class="mb-5">Explore Our Gallery</h1>
+        </div>
+        <div class="row g-0">
+            <% galleryImages.forEach((image, index) => { %>
+                <div class="col-md-4 wow fadeIn" data-wow-delay="0.<%= index + 2 %>s">
+                    <div class="gallery-item h-100" style="height: 300px; overflow: hidden;">
+                        <img src="<%= image.imageUrl.url %>" class="img-fluid w-100 h-100" style="object-fit: cover;" alt="<%= image.title %>">
+                        <div class="gallery-icon">
+                            <a href="<%= image.imageUrl.url %>" class="btn btn-primary btn-lg-square" data-lightbox="Gallery-<%= index + 1 %>">
+                                <i class="fa fa-eye"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+</div>
+<!-- Gallery End -->
+ <!-- Team Start -->
+<div class="container-fluid overflow-hidden py-5">
+    <div class="container">
+        <div class="text-center wow fadeIn" data-wow-delay="0.2s">
+            <h1 class="font-dancing-script text-primary">Team Members</h1>
+            <h1 class="mb-5">Our Experienced Specialists</h1>
+        </div>
+        <div class="row g-4 team">
+            <% if (staffData && staffData.length > 0) { %>
+                <% staffData.forEach((staff, index) => { %>
+                    <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="<%= 0.1 + index*0.2 %>s">
+                        <div class="team-item position-relative overflow-hidden">
+                            <img class="img-fluid w-100" src="<%= staff.image.url %>" alt="<%= staff.name %>">
+                            <div class="team-overlay">
+                                <p class="text-primary mb-1"><%= staff.specialization %></p>
+                                <h4><%= staff.name %></h4>
+                                <div class="d-flex justify-content-center">
+                                    <% if(staff.facebook){ %>
+                                        <a class="btn btn-dark btn-sm-square border-2 me-3" href="<%= staff.facebook %>">
+                                            <i class="fab fa-facebook-f"></i>
+                                        </a>
+                                    <% } %>
+                                    <% if(staff.instagram){ %>
+                                        <a class="btn btn-dark btn-sm-square border-2 me-3" href="<%= staff.instagram %>">
+                                            <i class="fab fa-instagram"></i>
+                                        </a>
+                                    <% } %>
+                                    <% if(staff.linkedin){ %>
+                                        <a class="btn btn-dark btn-sm-square border-2" href="<%= staff.linkedin %>">
+                                            <i class="fab fa-linkedin-in"></i>
+                                        </a>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <% }) %>
+            <% } else { %>
+                <p class="text-center">No staff members found.</p>
+            <% } %>
+        </div>
+    </div>
+</div>
+<!-- Team End -->
+

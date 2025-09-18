@@ -1,0 +1,44 @@
+<div class="max-w-4xl p-8 bg-[#f8f2eb] rounded-xl shadow-xl mt-10 mx-auto">
+  <h2 class="text-2xl font-bold text-[#5a4630] mb-6">Edit Staff</h2>
+
+  <form action="/admin/staff/edit/<%= staff._id %>?_method=PUT" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+    
+    <!-- Profile Image Preview -->
+    <div class="mb-4">
+      <img src="<%= staff.image?.url || 'https://via.placeholder.com/150' %>" 
+           alt="Staff Image" 
+           class="w-32 h-32 rounded-full object-cover border-4 border-[#bf9456] shadow-md mb-2">
+      <input type="file" name="image" class="form-control mb-1">
+      <div class="text-gray-500 text-sm">Leave blank to keep current image.</div>
+    </div>
+
+    <!-- Name -->
+    <div class="mb-4">
+      <label class="form-label">Name</label>
+      <input type="text" name="name" value="<%= staff.name || '' %>" class="form-control" required>
+      <div class="invalid-feedback">
+        Please enter the staff name.
+      </div>
+    </div>
+
+    <!-- Specialization / Role -->
+    <div class="mb-4">
+      <label class="form-label">Specialization / Role</label>
+      <input type="text" name="specialization" value="<%= staff.specialization || '' %>" class="form-control" required>
+      <div class="invalid-feedback">
+        Please enter the staff's specialization or role.
+      </div>
+    </div>
+
+    <!-- Form Actions -->
+    <div class="mt-4 flex justify-between">
+      <a href="/admin/staff" class="btn btn-secondary bg-gray-300 text-gray-700 hover:bg-gray-400">
+        Cancel
+      </a>
+      <button type="submit" class="btn btn-primary bg-[#bf9456] text-white hover:bg-[#a97d4b]">
+        Update Staff
+      </button>
+    </div>
+  </form>
+</div>
+

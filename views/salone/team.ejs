@@ -1,0 +1,62 @@
+
+
+    <!-- Hero Start -->
+    <div class="container-fluid bg-light page-header py-5 mb-5">
+        <div class="container text-center py-5">
+            <h1 class="display-1 animated slideInLeft">Our Team</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb justify-content-center animated slideInLeft mb-0">
+                    <li class="breadcrumb-item"><a class="text-primary" href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a class="text-primary" href="#">Pages</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Our Team</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <!-- Hero End -->
+
+
+   <!-- Team Start -->
+<div class="container-fluid overflow-hidden py-5">
+    <div class="container">
+        <div class="text-center wow fadeIn" data-wow-delay="0.2s">
+            <h1 class="font-dancing-script text-primary">Team Members</h1>
+            <h1 class="mb-5">Our Experienced Specialists</h1>
+        </div>
+        <div class="row g-4 team">
+            <% if (staffData && staffData.length > 0) { %>
+                <% staffData.forEach((staff, index) => { %>
+                    <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="<%= 0.1 + index*0.2 %>s">
+                        <div class="team-item position-relative overflow-hidden">
+                            <img class="img-fluid w-100" src="<%= staff.image.url %>" alt="<%= staff.name %>">
+                            <div class="team-overlay">
+                                <p class="text-primary mb-1"><%= staff.specialization %></p>
+                                <h4><%= staff.name %></h4>
+                                <div class="d-flex justify-content-center">
+                                    <% if(staff.facebook){ %>
+                                        <a class="btn btn-dark btn-sm-square border-2 me-3" href="<%= staff.facebook %>">
+                                            <i class="fab fa-facebook-f"></i>
+                                        </a>
+                                    <% } %>
+                                    <% if(staff.instagram){ %>
+                                        <a class="btn btn-dark btn-sm-square border-2 me-3" href="<%= staff.instagram %>">
+                                            <i class="fab fa-instagram"></i>
+                                        </a>
+                                    <% } %>
+                                    <% if(staff.linkedin){ %>
+                                        <a class="btn btn-dark btn-sm-square border-2" href="<%= staff.linkedin %>">
+                                            <i class="fab fa-linkedin-in"></i>
+                                        </a>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <% }) %>
+            <% } else { %>
+                <p class="text-center">No staff members found.</p>
+            <% } %>
+        </div>
+    </div>
+</div>
+<!-- Team End -->

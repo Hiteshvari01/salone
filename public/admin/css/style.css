@@ -1,0 +1,9 @@
+#sidebar.collapsed {
+    width: 80px;
+}
+
+#sidebar.collapsed ul li a {
+    text-align: center;
+    padding-left: 0;
+    font-size: 0.9rem;
+}

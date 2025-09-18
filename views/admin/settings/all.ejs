@@ -1,0 +1,35 @@
+<div class="max-w-4xl p-8 bg-[#f8f2eb] rounded-xl shadow-xl mt-10 mx-auto">
+  <div class="flex flex-col md:flex-row items-center md:items-start space-y-6 md:space-y-0 md:space-x-8">
+    
+    <!-- Profile Image -->
+    <div class="flex-shrink-0 relative">
+      <img src="<%= admin.profileImage && admin.profileImage.url ? admin.profileImage.url : 'https://via.placeholder.com/150' %>" 
+           alt="Profile Picture" 
+           class="w-28 h-28 rounded-full object-cover border-4 border-[#bf9456] shadow-md">
+    </div>
+    
+    <!-- Profile Details -->
+    <div class="flex-1">
+      <h2 class="text-3xl font-bold text-[#5a4630] mb-3"><%= admin.adminName || 'Admin Name' %></h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-[#5a4630]">
+        <p><strong class="font-medium">Phone:</strong> <%= admin.contactPhone || 'N/A' %></p>
+        <p><strong class="font-medium">password:</strong> <%= admin.password || 'N/A' %></p>
+        
+        <p><strong class="font-medium">Address:</strong> <%= admin.address || 'N/A' %></p>
+        <p><strong class="font-medium">Experience:</strong> <%= admin.yearsOfExperience || 0 %> years</p>
+        <p><strong class="font-medium">Happy Customers:</strong> <%= admin.happyCustomers || 0 %></p>
+        <p><strong class="font-medium">Discount Offer:</strong> <%= admin.discountOfferText || 'None' %></p>
+        <p class="col-span-1 md:col-span-2"><strong class="font-medium">Footer Text:</strong> <%= admin.footerAboutText || 'N/A' %></p>
+      </div>
+      
+      <div class="mt-6">
+        <a href="/admin/settings/<%= admin._id %>/edit" 
+           class="inline-block bg-[#bf9456] text-white px-6 py-3 rounded-lg font-medium shadow hover:bg-[#a97d4b] transition duration-300">
+          Edit Profile
+        </a>
+      </div>
+    </div>
+    
+  </div>
+</div>

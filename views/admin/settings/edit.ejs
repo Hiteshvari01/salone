@@ -1,0 +1,93 @@
+<div class="max-w-4xl p-8 bg-[#f8f2eb] rounded-xl shadow-xl mt-10 mx-auto"> 
+  <h2 class="text-2xl font-bold text-[#5a4630] mb-6">Edit Profile</h2>
+  <form action="/admin/settings/<%= admin._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+    
+    <!-- Profile Image Preview -->
+    <div class="mb-4">
+      <img src="<%= admin.profileImage && admin.profileImage.url ? admin.profileImage.url : 'https://via.placeholder.com/150' %>" 
+           alt="Profile Image" 
+           class="w-32 h-32 rounded-full object-cover border-4 border-[#bf9456] shadow-md mb-2">
+      <input type="file" name="profileImage" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4
+             file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-[#bf9456] file:text-white
+             hover:file:bg-[#a97d4b] transition duration-300">
+    </div>
+
+    <!-- Name -->
+    <div class="mb-4">
+      <label class="block mb-1 font-medium text-[#5a4630]">Name</label>
+      <input type="text" name="adminName" value="<%= admin.adminName || '' %>" required
+             class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#bf9456]">
+    </div>
+
+    <!-- Phone -->
+    <div class="mb-4">
+      <label class="block mb-1 font-medium text-[#5a4630]">Phone</label>
+      <input type="text" name="contactPhone" value="<%= admin.contactPhone || '' %>" required
+             class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#bf9456]">
+    </div>
+
+    <!-- Email -->
+    <div class="mb-4">
+      <label class="block mb-1 font-medium text-[#5a4630]">Email</label>
+      <input type="email" name="contactEmail" value="<%= admin.contactEmail || '' %>" required
+             class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#bf9456]">
+    </div>
+
+    <!-- Address -->
+    <div class="mb-4">
+      <label class="block mb-1 font-medium text-[#5a4630]">Address</label>
+      <input type="text" name="address" value="<%= admin.address || '' %>" required
+             class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#bf9456]">
+    </div>
+
+    <!-- Experience -->
+    <div class="mb-4">
+      <label class="block mb-1 font-medium text-[#5a4630]">Experience (years)</label>
+      <input type="number" name="yearsOfExperience" value="<%= admin.yearsOfExperience || '' %>" required
+             class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#bf9456]">
+    </div>
+
+    <!-- Happy Customers -->
+    <div class="mb-4">
+      <label class="block mb-1 font-medium text-[#5a4630]">Happy Customers</label>
+      <input type="number" name="happyCustomers" value="<%= admin.happyCustomers || '' %>" required
+             class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#bf9456]">
+    </div>
+
+    <!-- About Us Text -->
+    <div class="mb-4">
+      <label class="block mb-1 font-medium text-[#5a4630]">About Us</label>
+      <textarea name="aboutUsText" rows="4" required
+                class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#bf9456]"><%= admin.aboutUsText || '' %></textarea>
+    </div>
+
+    <!-- Discount Offer Percentage -->
+    <div class="mb-4">
+      <label class="block mb-1 font-medium text-[#5a4630]">Discount Offer Percentage</label>
+      <input type="number" name="discountOfferPercentage" value="<%= admin.discountOfferPercentage || '' %>"
+             class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#bf9456]">
+    </div>
+
+    <!-- Discount Offer Text -->
+    <div class="mb-4">
+      <label class="block mb-1 font-medium text-[#5a4630]">Discount Offer Text</label>
+      <input type="text" name="discountOfferText" value="<%= admin.discountOfferText || '' %>"
+             class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#bf9456]">
+    </div>
+
+    <!-- Footer Text -->
+    <div class="mb-4">
+      <label class="block mb-1 font-medium text-[#5a4630]">Footer Text</label>
+      <textarea name="footerAboutText" rows="3"
+                class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#bf9456]"><%= admin.footerAboutText || '' %></textarea>
+    </div>
+
+    <!-- Submit -->
+    <div>
+      <button type="submit"
+              class="bg-[#bf9456] text-white px-6 py-2 rounded-md font-semibold hover:bg-[#a97d4b] transition duration-300">
+        Update Profile
+      </button>
+    </div>
+  </form>
+</div>
