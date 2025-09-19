@@ -27,7 +27,7 @@ router.get('/all', wrapAsync(async (req, res) => {
 }));
 
 // -------- New Booking Form --------
-router.get('/new', wrapAsync(async (req, res) => {
+router.get('/new', validateBooking, wrapAsync(async (req, res) => {
     const services = await Services.find({}, "name");
     res.render('admin/booking/new', { 
         services,
@@ -38,31 +38,24 @@ router.get('/new', wrapAsync(async (req, res) => {
 
 // -------- Create Booking --------
 router.post('/submit', validateBooking, wrapAsync(async (req, res) => {
-    try {
-        let customer = await Customer.findOne({ email: req.body.customer.email });
-        if (!customer) {
-            customer = new Customer(req.body.customer);
-            await customer.save();
-        }
-
-        const newBooking = new Booking({
-            customer: customer._id,
-            serviceId: req.body.serviceId,
-            date: req.body.date,
-            time: req.body.time,
-            notes: req.body.notes
-        });
-
-        await newBooking.save();
-
-        req.flash('success', 'Booking created successfully!');
-        res.redirect('/admin/booking/all');
-
-    } catch (err) {
-        console.error(err);
-        req.flash('error', 'Failed to create booking. Please try again.');
-        res.redirect('/admin/booking/new');
+    let customer = await Customer.findOne({ email: req.body.customer.email });
+    if (!customer) {
+        customer = new Customer(req.body.customer);
+        await customer.save();
     }
+
+    const newBooking = new Booking({
+        customer: customer._id,
+        serviceId: req.body.serviceId,
+        date: req.body.date,
+        time: req.body.time,
+        notes: req.body.notes
+    });
+
+    await newBooking.save();
+
+    req.flash('success', 'Booking created successfully!');
+    res.redirect('/admin/booking/all');
 }));
 
 module.exports = router;
