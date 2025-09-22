@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const Admin = require("../models/admin.js");
-const wrapAsync = require("../utils/wrapAsync.js");
-const { validateAdmin } = require("../middleware.js");
+const Admin = require("../models/admin");
+const wrapAsync = require("../utils/wrapAsync");
+const { validateAdmin } = require("../middleware");
 const methodOverride = require("method-override");
 const multer = require("multer");
 const { storage } = require("../config.js");

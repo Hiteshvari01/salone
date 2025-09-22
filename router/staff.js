@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const Staff = require('../models/staff.js');
-const { validateStaff } = require('../middleware.js');
-const wrapAsync = require('../utils/wrapAsync.js');
+const Staff = require('../models/staff');
+const { validateStaff } = require('../middleware');
+const wrapAsync = require('../utils/wrapAsync');
 const methodOverride = require('method-override');
 const multer = require('multer');
 const { storage } = require('../config.js'); // Cloudinary storage

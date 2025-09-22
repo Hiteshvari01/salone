@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const GalleryImage = require("../models/gallery.js");
-const { validateGalleryImage } = require("../middleware.js");
-const wrapAsync = require("../utils/wrapAsync.js");
+const GalleryImage = require("../models/gallery");
+const { validateGalleryImage } = require("../middleware");
+const wrapAsync = require("../utils/wrapAsync");
 const methodOverride = require("method-override");
 const multer = require("multer");
 const { storage } = require("../config.js");

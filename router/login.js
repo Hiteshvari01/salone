@@ -9,7 +9,6 @@ const { isNotLoggedIn } = require('../middleware');
 router.get('/login', isNotLoggedIn, (req, res) => {
   // Prevent redirect loop if already logged in
   if (req.session.adminId) return res.redirect('/admin/dashboard');
-  console.log("admin not found",req.session);
   res.render('admin/login/login', { error: null, layout: false });
 });
 
