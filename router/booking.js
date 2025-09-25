@@ -30,6 +30,7 @@ router.get('/all', wrapAsync(async (req, res) => {
 router.get('/new', wrapAsync(async (req, res) => {
     const services = await Services.find({}, "name");
     res.render('admin/booking/new', { 
+        old: {}, 
         services,
         success: req.flash('success'),
         error: req.flash('error')
@@ -37,27 +38,34 @@ router.get('/new', wrapAsync(async (req, res) => {
 }));
 
 // -------- Create Booking --------
-router.post('/submit', validateBooking, wrapAsync(async (req, res) => {
+router.post('/submit', wrapAsync(async (req, res) => {
     try {
-        let customer = await Customer.findOne({ email: req.body.customer.email });
-        if (!customer) {
-            customer = new Customer(req.body.customer);
-            await customer.save();
+        // extract customer object
+        const { customer, serviceId, date, time, notes } = req.body;
+
+        // find or create customer
+        let existingCustomer = await Customer.findOne({ email: customer.email });
+        if (!existingCustomer) {
+            existingCustomer = await Customer.create(customer);
         }
 
-        const newBooking = new Booking({
-            customer: customer._id,
-            serviceId: req.body.serviceId,
-            date: req.body.date,
-            time: req.body.time,
-            notes: req.body.notes
-        });
+        // now construct booking input
+        const bookingData = {
+            customer: existingCustomer._id,   // ✅ ObjectId now
+            serviceId,
+            date,
+            time,
+            notes
+        };
+
+        // validateBooking should check this bookingData, not raw req.body
+        const newBooking = new Booking(bookingData);
+        await newBooking.validate(); // manual validation
 
         await newBooking.save();
 
         req.flash('success', 'Booking created successfully!');
         res.redirect('/admin/booking/all');
-
     } catch (err) {
         console.error(err);
         req.flash('error', 'Failed to create booking. Please try again.');

@@ -14,7 +14,9 @@
             </div>
             <div>
                 <label class="block mb-1 text-[#5a4630]">Customer Phone</label>
-                <input type="tel" name="customer[phone]" class="w-full border border-[#c69858] p-2 rounded" required />
+                <input type="tel" name="customer[phone]" pattern="[0-9]{10}" 
+                    placeholder="1234567890" 
+                    class="w-full border border-[#c69858] p-2 rounded" required />
                 <div class="invalid-feedback">Customer Phone is required.</div>
             </div>
             <div>
@@ -28,7 +30,7 @@
                 <div class="invalid-feedback">Please select a service.</div>
             </div>
             <div>
-                <label class="block mb-1 text-[#5a4630]">Date</label>
+                <label class="block mb-1 text-[#5a4630]"min="<%= new Date().toISOString().split('T')[0] %>">Date</label>
                 <input type="date" name="date" class="w-full border border-[#c69858] p-2 rounded" required />
                 <div class="invalid-feedback">Date is required.</div>
             </div>
